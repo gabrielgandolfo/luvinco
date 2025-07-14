@@ -49,6 +49,14 @@ docker exec -it luvinco_backend_1 php artisan queue:work
 - **Backend API**: [`http://localhost:8000/api`](http://localhost:8000/api)
 
 ---
+## Considerações
+
+Esse README principal contém apenas os passos essenciais de instalação e uso.
+
+Documentações mais detalhadas para back e front:
+
+- [`backend/README.md`](./backend/README.md): Estrutura, Classes de testes, Jobs, etc..
+- [`frontend/README.md`](./frontend/README.md): Instruções, variáveis de ambiente, build e desenvolvimento.
 
 ---
 
