@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+#    volumes:
+#      - ./backend:/var/www
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: luvinco
+      DB_USERNAME: root
+      DB_PASSWORD: root
+    networks:
+      - luvinco
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80" # Nginx serve na 80, mapeada para 5173
+    networks:
+      - luvinco
+
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: luvinco
+    ports:
+      - "3307:3306"
+    networks:
+      - luvinco
+
+networks:
+  luvinco:
+    driver: bridge
